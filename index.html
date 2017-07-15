@@ -1,0 +1,1425 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>  
+
+            <link rel="canonical" href="http://blog.csdn.net/huaishu/article/details/50475175"/> 
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+       
+    <title>GitLab使用总结 - 怀素的专栏
+        - CSDN博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="gitlab 服务端 客户端 基本使用" />
+
+    <meta name="keywords" content="" />
+
+   
+    <script src="http://static.blog.csdn.net/scripts/blog_static_head.min.js" type="text/javascript"></script>
+
+    
+        <!--new top-->
+                      <!--new top-->
+    
+      <!-- ad begin -->
+         
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/ink/css/style.css?v=1.1" />
+
+    
+
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/huaishu/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+
+    <link href="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.css" type="text/css" rel="stylesheet" />
+     
+         <link rel="stylesheet" href="http://static.blog.csdn.net/css/csdn_blog_detail.min.css" />
+
+  
+
+
+    <!-- 请置于所有广告位代码之前 --> 
+            <script src="http://dup.baidustatic.com/js/ds.js"></script>
+
+</head>
+
+
+<body>
+     
+        <div class="tracking-ad" data-view="true" data-mod="ad_popu_72"  data-mtp="62" data-order="40" data-con="ad_content_2072" >
+                     <script id="popuLayer_js_q" src="http://ads.csdn.net/js/popuLayer.js" defer="defer"  type="text/javascript"></script>
+                <div id="layerd" style="position: fixed;bottom:0px;right:0px;line-height:0px;z-index:1000">
+    	                <div class="J_close layer_close" style="display:;background-color:#efefef;padding:0px;color:#333;font:12px/24px Helvetica,Tahoma,Arial,sans-serif;text-align:right;">关闭</div><!-- 广告占位容器 --><div id="cpro_u2895327"></div></div>
+                <script>  document.getElementById("popuLayer_js_q").onload = function () { var styObjd = styObj = { width: "300px", "height": parseInt(250) + 28 }; window.CSDN.Layer.PopuLayer("#layerd", { storageName: "layerd", styleObj: styObjd, total: 50, expoire: 1000 * 60 }); }</script><!-- 投放代码 --><script type="text/javascript">                    /*服务器频道首页置顶Banner960*90，创建于2014-7-3*/    (window.cproArray = window.cproArray || []).push({ id: "u2895327" });  </script>  <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+     
+        </div>
+
+    <!-- 广告位开始 -->
+        
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/huaishu">怀素的专栏</a></h2>
+            <h3>桃之夭夭,灼灼其华</h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        
+     
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>           
+                <li id="btnContents"><a href="http://blog.csdn.net/huaishu?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/huaishu?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/huaishu/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "huaishu";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/huaishu";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/75116901">
+<font color=red><strong>从创业到再就业，浅述对程序员职业生涯的看法</strong></font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/74550215">
+<font color=blue><strong>征文 | 你会为 AI 转型么？</strong></font></a>
+&nbsp;&nbsp;&nbsp;&nbsp
+
+
+<a href="http://blog.csdn.net/epubit17/article/details/74279903">
+<font color=red><strong>赠书：7月大咖新书机器学习/Android/python</strong></font></a>
+
+
+</div>                        </div>
+
+                        
+
+
+
+  
+
+
+
+
+
+
+<script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+      var isBole = false; 
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=GitLab%e4%bd%bf%e7%94%a8%e6%80%bb%e7%bb%93&u=http://blog.csdn.net/huaishu/article/details/50475175"
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Original"></span>
+
+    <h1>
+        <span class="link_title"><a href="/huaishu/article/details/50475175">
+        GitLab使用总结        
+           
+        </a>
+        </span>
+
+         
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2016-01-07 11:56</span>
+            <span class="link_view" title="阅读次数">62547人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(5)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('GitLab%e4%bd%bf%e7%94%a8%e6%80%bb%e7%bb%93','50475175');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(50475175,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+      <div class="category clearfix">
+        <div class="category_l">
+           <img src="http://static.blog.csdn.net/images/category_icon.jpg">
+            <span>分类：</span>
+        </div>
+        <div class="category_r">
+                    <label  onclick="GetCategoryArticles('2704175','huaishu','top','50475175');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">git<em>（4）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/huaishu/article/category/2704175"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_2704175">                            
+                            </ul>
+                        </div>
+                    </label>                    
+                    <label  onclick="GetCategoryArticles('956887','huaishu','top','50475175');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">项目管理<em>（94）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/huaishu/article/category/956887"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_956887">                            
+                            </ul>
+                        </div>
+                    </label>                    
+        </div>
+    </div>
+        <div   class="bog_copyright">         
+            <p  class="copyright_p" >版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+        </div>
+
+  
+
+  
+  
+     
+
+
+<div id="article_content" class="article_content tracking-ad" data-mod=popu_307  data-dsm = "post" >
+
+<p>代码管理一直用svn，git的分支管理认为是最好的，尝试用用。</p>
+<p><br>
+</p>
+<p></p>
+<h2 style="margin:0px; padding:0px">一.GitLab简介</h2>
+<p></p>
+<p>GitLab&nbsp;是一个用于仓库管理系统的开源项目。使用<a target="_blank" target="_blank" href="http://baike.baidu.com/view/1531489.htm">Git</a>作为代码管理工具，并在此基础上搭建起来的web服务。</p>
+<p>可通过Web界面进行访问公开的或者私人项目。它拥有与Github类&#20284;的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
+<p>下载安装&nbsp;https://bitnami.com/stack/gitlab/installer</p>
+<p></p>
+<h2 style="margin:0px; padding:0px">二.GitLab&nbsp;的配置与使用</h2>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<h3 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t3"></a>1.创建新项目（web）</h3>
+<p>1-1.登录gitlab网址成功后，点击右侧导航条上的&nbsp;“&#43;”&nbsp;就可以进入创建项目的页面</p>
+<p></p>
+<p>&nbsp;<img src="http://git.devzeng.com/images/gitlab_usage/new_project_1.png" alt="new_project_1.png" style="border:none; max-width:100%"></p>
+<p>1-2.在创建工程的页面，按照要求填写项目的名称和可见性等信息。</p>
+<p>Project&nbsp;path：项目的路径，一般可以认为是项目的名称</p>
+<p>Import&nbsp;prject&nbsp;from：从哪导入项目，提供Github/Bitbucket等几个选项</p>
+<p>Description（项目的描述）：可选项，对项目的简单描述</p>
+<p>Visibility&nbsp;Level（项目可见级别）：提供Private（私有的，只有你自己或者组内的成员能访问）/Internal（所有登录的用户）/Public(公开的，所有人都可以访问)三种选项。</p>
+<p><img src="http://img.blog.csdn.net/20151118145922637?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" align="middle" alt="" style="border:none; max-width:100%"></p>
+<p>&nbsp;</p>
+<h3 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t4"></a>2.添加和配置SSH公钥：</h3>
+<p>2-1.SSH（Secure&nbsp;Shell）是一种安全协议，在你的电脑与GitLab服务器进行通信时，我们使用SSH密钥（SSH&nbsp;Keys）认证的方式来保证通信安全。</p>
+<p>2-2.创建&nbsp;SSH密钥，并将密钥中的公钥添加到GitLab，以便我们通过SSH协议来访问Git仓库。</p>
+<p>SSH&nbsp;密钥的创建需要在终端（命令行）环境下进行，我们首先进入命令行环境。通常在OS&nbsp;X和Linux平台下我们使用终端工具（Terminal），在Windows平台中，可以使用<a target="_blank" target="_blank" href="http://download.csdn.net/detail/sun_2134/9279961">Git&nbsp;Bash</a>工具，git客户端安装目录下git-bash.exe文件</p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<h4 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t5"></a>A：进入SSH目录：cd ~/.ssh</h4>
+<p></p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+（1）如果还没有 ~/.ssh 目录，可以手工创建一个(<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">mkdir ~/.ssh</span>)，之后再通过<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">cd
+ ~/.ssh</span>进入SSH目录</p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+（2）可以通过<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">ls -l</span>命令查看SSH目录下的文件，来确认你是否已经生成过SSH密钥；如果SSH目录为空，我们开始第二步B，生成 SSH 密钥；如果存在id_rsa.pub这个文件，说明你之前生成过SSH密钥，如何添加多个sshkey也不难，一般很少用，这里不介绍了。</p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<h4 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t6"></a>B：生成SSH密钥</h4>
+<p></p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+我们通过下面的命令生成密钥，请将命令中的<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">YOUR_EMAIL@YOUREMAIL.COM</span>替换为你注册gitlab时用的<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">Email</span>地址。</p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">ssh-keygen -t rsa -C &quot;YOUR_EMAIL@YOUREMAIL.COM&quot;</span></p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+在SSH生成过程中会出现以下信息，按屏幕的提示操作即可：</p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<img src="http://img.blog.csdn.net/20151118182316887?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<span style="color:#ff0000">Note：<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); line-height:1.5em; display:inline-block">Enter passphrase (empty for no passphrase) :</span>时，可以直接按两次回车键输入一个空的
+ passphrase；也可以选择输入一个 passphrase 口令，如果此时你输入了一个<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); line-height:1.5em; display:inline-block">passphrase</span>，请牢记，之后每次提交时都需要输入这个口令来确认。</span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<span style="color:#ff0000">实践过程中Android studio 如果有密码无法同步，建议不要密码。</span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<span style="color:#ff0000">公钥默认地址：C:\Users\用户\.ssh&nbsp;</span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+<span style="color:#ff0000">连接git服务器生成可信任文件known_hosts，否则会报：Push failed: Failed with error: fatal: Could not read from remote repository.</span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+</p>
+<p style="color:rgb(34,36,38); margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; font-size:15px; clear:both; font-family:Arial,'Helvetica Neue',Helvetica,sans-serif; line-height:19.5px">
+Per Android Studio help under SSH Executable:</p>
+<ul style="color:rgb(34,36,38); margin:0px 0px 1em 30px; padding:0px; border:0px; font-size:15px; font-family:Arial,'Helvetica Neue',Helvetica,sans-serif; line-height:19.5px">
+<li style="margin:0px 0px 0.5em; padding:0px; border:0px; word-wrap:break-word">Built-in: select this option to use the implementation provided by IntelliJ IDEA.</li><li style="margin:0px; padding:0px; border:0px; word-wrap:break-word">Native: select this option to use native implementation.</li></ul>
+<span style="color:#cc0000">修改<span style="font-family:Arial,'Helvetica Neue',Helvetica,sans-serif; font-size:15px; line-height:19.5px">SSH Executable 为 Native</span></span></blockquote>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<h3 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t7"></a>3.获取SSH公钥信息：</h3>
+<p>SSH密钥生成结束后，根据提示信息找到SSH目录，会看到私钥<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa</span>和公钥<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa.pub</span>这两个文件，不要把私钥文件<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa</span>的信息透露给任何人。我们可以通过<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">cat</span>命令或文本编辑器来查看<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa.pub</span>公钥信息。</p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+（1）通过编辑器。使用你熟悉的文本编辑器，比如 记事本、Sublime Text等软件打开<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa.pub</span>，复制里面的所有内容以备下一步使用。</p>
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+（2）通过cat命令。在命令行中敲入<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">cat id_rsa.pub</span>，回车执行后命令行界面中会显示<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa.pub</span>文件里的内容，复制后在下一步使用。</p>
+<p></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+（3）通过直接使用命令将<span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); display:inline-block">id_rsa.pub</span>文件里的内容复制到剪切板中</p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+Windows:&nbsp;<span style="color:#555555"><span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); font-style:inherit; font-variant:inherit; font-weight:inherit; line-height:1.5em; display:inline-block">clip
+ &lt; ~/.ssh/id_rsa.pub</span></span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+Mac:&nbsp;<span style="color:#555555"><span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); font-style:inherit; font-variant:inherit; font-weight:inherit; line-height:1.5em; display:inline-block">pbcopy
+ &lt; ~/.ssh/id_rsa.pub</span></span></p>
+<p style="margin-top:0px; margin-bottom:1.5em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline">
+GNU/Linux (requires xclip):&nbsp;<span style="color:#555555"><span style="margin-top:-1px; margin-bottom:-1px; padding-right:0.3em; padding-left:0.3em; border:1px solid rgb(221,221,221); font-style:inherit; font-variant:inherit; font-weight:inherit; line-height:1.5em; display:inline-block">xclip
+ -sel clip &lt; ~/.ssh/id_rsa.pub</span></span></p>
+</blockquote>
+<blockquote style="margin:0px 0px 0px 40px; border:none; padding:0px">
+<h3 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t8"></a>4.添加SSH公钥到gitlab：</h3>
+<p>4-1.打开gitlab的Profile配置页面，选择SSH Keys,如图：</p>
+<p><img src="http://img.blog.csdn.net/20151118183709635?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<p><img src="http://img.blog.csdn.net/20151118164517966?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<p>4-2.添加SSH公钥。填写Title和Key，其中Title是Key的描述信息，Key是上面复制的SSH公钥的内容，直接粘贴到输入框中保存即可。</p>
+<p><img src="http://img.blog.csdn.net/20151118164823655?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<h4 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t9"></a><br>
+</h4>
+<h4 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t10"></a><img src="http://img.blog.csdn.net/20151118164918530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="" style="border:none; max-width:100%"><br>
+</h4>
+<h4 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t11"></a><br>
+</h4>
+<h3 style="margin:0px 0px 1em; padding:0px; border:0px; vertical-align:baseline">
+<a target="_blank" target="_blank" name="t12"></a>5.导入项目:</h3>
+<h4 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t13"></a>5-1.设置下git的用户名和邮箱</h4>
+<div>在提交代码前，还需要设置下git的用户名和邮箱（最好用英文，不要出现中文），这样提交记录才会在gitlab上显示带有你名字的记录。</div>
+<div>在命令行窗口输入（windows需要安装打开<a target="_blank" target="_blank" href="http://download.csdn.net/detail/sun_2134/9279961">Git Bash</a>工具才行）：</div>
+<div>git config --global user.name&quot;your_name&quot;<br>
+git config --global user.email&nbsp;&quot;your_email&quot;<br>
+</div>
+<p></p>
+<p></p>
+<p></p>
+<h4 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t14"></a>5-2.导新项目到gitlab上</h4>
+<p>如果项目存在，需要导入到gitlab，可以通过命令行直接将项目导入上去。<br>
+</p>
+<p></p>
+<pre name="code" class="plain">cd &quot;本地存在项目的路径&quot;
+git init
+git remote add origin git@gitlab.com:USERNAME/PROJECTNAME.git
+git add .
+git commit -m &#39;first git demo&#39;
+git push -u origin master</pre>
+<p></p>
+<p>（注：将USERNAME和PROJECTNAME替换成用户名和项目的名称）</p>
+<p><br>
+</p>
+<h4 style="margin:0px; padding:0px"><a target="_blank" target="_blank" name="t15"></a>5-3.导入项目到本地</h4>
+<p>git clone&quot;你的项目地址&quot;</p>
+<p><img src="http://img.blog.csdn.net/20151118183329673?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<p><br>
+</p>
+<p>Note：如何在gitlab上找到你的项目地址位置，请看下图：</p>
+<p><img src="http://img.blog.csdn.net/20151118182853095?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" align="middle" alt="" style="border:none; max-width:100%"><br>
+</p>
+<p><img src="http://img.blog.csdn.net/20151123160951678?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" align="middle" alt="" width="867" height="518" style="border:none; max-width:100%"><br>
+</p>
+<p style="color:rgb(54,46,43); font-family:Arial; font-size:14px; line-height:26px">
+<span style="font-size:18px"><br>
+</span></p>
+</blockquote>
+<br>
+<p></p>
+   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   
+
+<!--172.16.140.13-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+
+
+ 
+
+
+        <div id="digg" ArticleId="50475175" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>14</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='http://blog.csdn.net/huaishu/article/details/50396737';">上一篇</span><a href="http://blog.csdn.net/huaishu/article/details/50396737" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">泰国旅游随想</a></li>
+                <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='http://blog.csdn.net/huaishu/article/details/50475317';">下一篇</span><a href="http://blog.csdn.net/huaishu/article/details/50475317" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">GitLab/Git在AndroidStudio上的使用</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+            <div class="similar_article"   >
+                    <h4></h4>
+                    <div class="similar_c"style="margin:20px 0px 0px 0px">
+                        <div class="similar_c_t">
+                          &nbsp;&nbsp;相关文章推荐
+                        </div>
+                   
+                        <div class="similar_wrap tracking-ad" data-mod="popu_36" >                       
+                            <ul class="similar_list fl">    
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/zy416548283/article/details/38057925" title="git服务器gitlab之搭建和使用" strategy="BlogCommendFromBaidu" target="_blank">git服务器gitlab之搭建和使用</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/w13770269691/article/details/38705473" title="Gitlab的使用" strategy="BlogCommendFromBaidu" target="_blank">Gitlab的使用</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/cuixiping/article/details/1563908" title="JavaScript扫雷游戏，仿Windows扫雷" strategy="BlogCommendFromBaidu" target="_blank">JavaScript扫雷游戏，仿Windows扫雷</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/cuixiping/article/details/12941421" title="SVG + Javascript 实现的五边形的扫雷游戏" strategy="BlogCommendFromBaidu" target="_blank">SVG + Javascript 实现的五边形的扫雷游戏</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/l472995348/article/details/6040346" title="关于thinkpad安装windows7屏幕亮度调节的解决方案" strategy="BlogCommendFromBaidu" target="_blank">关于thinkpad安装windows7屏幕亮度调节的解决方案</a>
+                                   </li>
+                            </ul>
+                              <ul class="similar_list fr">      
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/qwfys200/article/details/52881712" title="Gitlab使用说明" strategy="BlogCommendFromBaidu" target="_blank">Gitlab使用说明</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/u011449127/article/details/17013723" title="gitlab使用" strategy="BlogCommendFromBaidu" target="_blank">gitlab使用</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/taixinlfx/article/details/50468457" title="gitlab使用说明" strategy="BlogCommendFromBaidu" target="_blank">gitlab使用说明</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/tlqfreedom/article/details/62037741" title="Git &amp; Gitlab 使用指南" strategy="BlogCommendFromBaidu" target="_blank">Git &amp; Gitlab 使用指南</a>
+                                   </li>
+                                   <li>
+                                       <em>?</em>
+                                       <a href="http://blog.csdn.net/u011904605/article/details/53427234" title="Git &amp; GitLab 使用及规范" strategy="BlogCommendFromBaidu" target="_blank">Git &amp; GitLab 使用及规范</a>
+                                   </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>   
+      
+</div>
+
+    <div>
+        
+
+        <script type="text/javascript">
+            /*博客内容页下方Banner1-728*90，创建于2016-12-13*/
+            var cpro_id = "u2843949";
+        </script>
+        <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+     </div>
+
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/huaishu/svc/GetSuggestContent/50475175",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+        <dl class="blog-ass-articl tracking-ad" id="res-relatived" data-mod="popu_84"  > 
+             <dt><span>猜你在找</span></dt>    
+           
+    
+           
+
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/46" title="机器学习之概率与统计推断" strategy="undefined" target="_blank">机器学习之概率与统计推断</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/49" title="机器学习之数学基础" strategy="undefined" target="_blank">机器学习之数学基础</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/48" title="机器学习之凸优化" strategy="undefined" target="_blank">机器学习之凸优化</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/47" title="机器学习之矩阵" strategy="undefined" target="_blank">机器学习之矩阵</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/detail/421" title="响应式布局全新探索" strategy="undefined" target="_blank">响应式布局全新探索</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/detail/426" title="探究Linux的总线、设备、驱动模型" strategy="undefined" target="_blank">探究Linux的总线、设备、驱动模型</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/detail/422" title="深度学习基础与TensorFlow实践" strategy="undefined" target="_blank">深度学习基础与TensorFlow实践</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/45" title="深度学习之神经网络原理与实战技巧" strategy="undefined" target="_blank">深度学习之神经网络原理与实战技巧</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/43" title="前端开发在线峰会" strategy="undefined" target="_blank">前端开发在线峰会</a>
+                        </dd>
+                        <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px; white-space: nowrap;">
+                             <a href="http://edu.csdn.net/huiyiCourse/series_detail/44" title="TensorFlow实战进阶：手把手教你做图像识别应用" strategy="undefined" target="_blank">TensorFlow实战进阶：手把手教你做图像识别应用</a>
+                        </dd>
+        </dl>
+
+
+
+
+            
+                                    
+            
+                                    
+
+        <!-- 广告位开始 -->
+        <!-- 广告位结束 -->
+
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '50475175';
+    var commentscount = 5;
+    var islock = false
+</script>
+
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){        
+        
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+    var articletitle='GitLab使用总结';
+
+</script>
+
+
+
+
+
+
+
+
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+               
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/huaishu" target="_blank">
+    <img src="http://avatar.csdn.net/3/D/5/1_huaishu.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/huaishu" class="user_name" target="_blank">huaishu</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=huaishu','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+                                            <a  target="_blank">
+                                                    <img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png" onmouseover="m_over_m(this,4)" onmouseout="m_out_m()" alt="4" >
+                                            </a>
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>540185次</span></li>
+    <li>积分：<span>7221</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog6.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：7221 </div>
+        </span>  </li>
+    <li>排名：<span>第2937名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>239篇</span></li>
+    <li>转载：<span>170篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>34条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body" class="form_search">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search csdn-tracking-statistics" target="_blank"  data-mod="popu_306">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+   
+    $(function () {
+        $("#btnSubmit").unbind("click");
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {           
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            if ($("#inputSearch").val() == "") {               
+                alert("请录入搜索关键词！");                         
+                return false;
+            }
+            //var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";           
+            var url = "https://www.baidu.com/s?wd=" + encodeURIComponent($("#inputSearch").val()) + "%20site%3Ablog.csdn.net"
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/huaishu/article/category/373129" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">随想</a><span>(24)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/947720" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">nginx</a><span>(10)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/947721" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">mongo</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/947722" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">neo4j</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/956073" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">需求分析</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/956887" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">项目管理</a><span>(95)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1061487" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">数据架构</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1321965" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">hadoop</a><span>(8)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1328162" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">线程并发库</a><span>(21)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1331044" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Redis</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1335100" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">lucene</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1385103" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">操作系统</a><span>(25)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1389811" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">数据库技术与优化</a><span>(65)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1431062" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">团队建设</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1439189" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">JAVA</a><span>(34)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1486525" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">设计模式</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1492597" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">算法</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1533559" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">mysql</a><span>(10)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1536637" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">DB2数据库</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1536703" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">JVM</a><span>(23)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1659925" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">读书笔记</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1704197" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">产品思想</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1739309" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">负载均衡</a><span>(14)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1809797" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">代码规范</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1817203" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">持续集成</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/1853641" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">敏捷开发</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2151097" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">SCM管理</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2161863" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">网络</a><span>(23)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2206165" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">前端交互</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2214205" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">员工招聘</a><span>(6)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2550355" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">流程管理</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2563969" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">技术演示</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2598809" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">情绪管理</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2704175" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">git</a><span>(5)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/2966579" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">互联网</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/3046395" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">PowerDesigner</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/3063231" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">架构师</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/6057249" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">android</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/6806824" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">英语</a><span>(4)</span>
+                </li>
+                 <li>
+                    <a href="/huaishu/article/category/6907204" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">消息队列</a><span>(0)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/huaishu/article/month/2017/07">2017年07月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2017/06">2017年06月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2017/05">2017年05月</a><span>(13)</span></li><li><a href="/huaishu/article/month/2017/04">2017年04月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2017/03">2017年03月</a><span>(6)</span></li><li><a href="/huaishu/article/month/2017/02">2017年02月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2017/01">2017年01月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2016/12">2016年12月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2016/11">2016年11月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2016/09">2016年09月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2016/07">2016年07月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2016/06">2016年06月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2016/05">2016年05月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2016/04">2016年04月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2016/03">2016年03月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2016/02">2016年02月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2016/01">2016年01月</a><span>(9)</span></li><li><a href="/huaishu/article/month/2015/12">2015年12月</a><span>(4)</span></li><li><a href="/huaishu/article/month/2015/11">2015年11月</a><span>(14)</span></li><li><a href="/huaishu/article/month/2015/10">2015年10月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2015/09">2015年09月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2015/08">2015年08月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2015/07">2015年07月</a><span>(4)</span></li><li><a href="/huaishu/article/month/2015/06">2015年06月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2015/05">2015年05月</a><span>(6)</span></li><li><a href="/huaishu/article/month/2015/03">2015年03月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2015/02">2015年02月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2015/01">2015年01月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2014/11">2014年11月</a><span>(7)</span></li><li><a href="/huaishu/article/month/2014/10">2014年10月</a><span>(4)</span></li><li><a href="/huaishu/article/month/2014/09">2014年09月</a><span>(14)</span></li><li><a href="/huaishu/article/month/2014/08">2014年08月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2014/07">2014年07月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2014/06">2014年06月</a><span>(9)</span></li><li><a href="/huaishu/article/month/2014/05">2014年05月</a><span>(7)</span></li><li><a href="/huaishu/article/month/2014/04">2014年04月</a><span>(11)</span></li><li><a href="/huaishu/article/month/2014/03">2014年03月</a><span>(6)</span></li><li><a href="/huaishu/article/month/2014/02">2014年02月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2014/01">2014年01月</a><span>(6)</span></li><li><a href="/huaishu/article/month/2013/12">2013年12月</a><span>(12)</span></li><li><a href="/huaishu/article/month/2013/11">2013年11月</a><span>(20)</span></li><li><a href="/huaishu/article/month/2013/10">2013年10月</a><span>(9)</span></li><li><a href="/huaishu/article/month/2013/09">2013年09月</a><span>(15)</span></li><li><a href="/huaishu/article/month/2013/08">2013年08月</a><span>(33)</span></li><li><a href="/huaishu/article/month/2013/07">2013年07月</a><span>(37)</span></li><li><a href="/huaishu/article/month/2013/06">2013年06月</a><span>(20)</span></li><li><a href="/huaishu/article/month/2013/05">2013年05月</a><span>(19)</span></li><li><a href="/huaishu/article/month/2013/04">2013年04月</a><span>(20)</span></li><li><a href="/huaishu/article/month/2013/03">2013年03月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2013/02">2013年02月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2013/01">2013年01月</a><span>(27)</span></li><li><a href="/huaishu/article/month/2012/12">2012年12月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2012/02">2012年02月</a><span>(2)</span></li><li><a href="/huaishu/article/month/2012/01">2012年01月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2011/12">2011年12月</a><span>(6)</span></li><li><a href="/huaishu/article/month/2011/08">2011年08月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2011/07">2011年07月</a><span>(5)</span></li><li><a href="/huaishu/article/month/2011/04">2011年04月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2011/03">2011年03月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2008/03">2008年03月</a><span>(1)</span></li><li><a href="/huaishu/article/month/2007/08">2007年08月</a><span>(4)</span></li><li><a href="/huaishu/article/month/2007/01">2007年01月</a><span>(3)</span></li><li><a href="/huaishu/article/month/2006/12">2006年12月</a><span>(1)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel tracking-ad" data-mod="popu_340">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/huaishu/article/details/50475175" title="GitLab使用总结">GitLab使用总结</a><span>(62468)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/38778777" title="bundle install 命令">bundle install 命令</a><span>(22643)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/50540814" title="MySQL创建用户的三种方法">MySQL创建用户的三种方法</a><span>(20063)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/26725539" title="Java代码规范">Java代码规范</a><span>(14532)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/8762957" title="Linux 交换分区">Linux 交换分区</a><span>(11943)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/9253769" title="Mongodb高可用架构—Replica Set 集群实战">Mongodb高可用架构—Replica Set 集群实战</a><span>(11672)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/16981147" title="ora-01652无法通过128(在表空间temp中)扩展temp段">ora-01652无法通过128(在表空间temp中)扩展temp段</a><span>(11040)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/24876081" title="Findbugs的安装和使用简介">Findbugs的安装和使用简介</a><span>(10401)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/38686501" title="redmine插件安装">redmine插件安装</a><span>(10239)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/17023061" title="Ipvsadm参数详解（常用命令）">Ipvsadm参数详解（常用命令）</a><span>(9869)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel tracking-ad" data-mod="popu_341">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/huaishu/article/details/50475175" title="GitLab使用总结">GitLab使用总结</a><span>(5)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/1477876" title="ASP.NET 工作原理">ASP.NET 工作原理</a><span>(3)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/6620156" title="Java实现LRU（最近最少使用）缓存">Java实现LRU（最近最少使用）缓存</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/50475317" title="GitLab/Git在AndroidStudio上的使用">GitLab/Git在AndroidStudio上的使用</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/9253769" title="Mongodb高可用架构—Replica Set 集群实战">Mongodb高可用架构—Replica Set 集群实战</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/40891229" title="Linux下git安装配置">Linux下git安装配置</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/11748927" title="Neo4j文件说明">Neo4j文件说明</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/44589999" title="PowerDesigner  name commnet 自动生成脚本">PowerDesigner  name commnet 自动生成脚本</a><span>(2)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/10355661" title="软件开发--甲方的控诉">软件开发--甲方的控诉</a><span>(1)</span>
+</li>
+<li>
+<a href="/huaishu/article/details/10164023" title="JAVA Class文件格式">JAVA Class文件格式</a><span>(1)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/blogdevteam/article/details/75086638" target="_blank">* CSDN日报20170713——《程序人生，终究是起承转合》</a></li>
+<li><a href="http://blog.csdn.net/jiangwei0910410003/article/details/74435238" 
+target="_blank">* Android中免root的hook框架Legend原理解析</a></li>
+<li><a href="http://blog.csdn.net/briblue/article/details/75093382"target="_blank">* 轻松学，浅析依赖倒置（DIP）、控制反转(IOC)和依赖注入(DI)</a></li>
+<li><a href="http://blog.csdn.net/sileixinhua/article/details/75091365" 
+target="_blank">* 谣言识别系统（Python）：爬虫（bs+rq）+数据处理（jieba分词）+分类器（贝叶斯）</a></li>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/75000580" 
+target="_blank">* 滴滴插件化方案 VirtualApk 源码解析</a></li>
+<li><a href="http://blog.csdn.net/broadview2006/article/details/75036429" 
+target="_blank">* 每周荐书：大数据、深度学习、架构（评论送书）</a></li>
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/huaishu/article/details/11748927#comments">Neo4j文件说明</a>
+    <p style="margin:0px;"><a href="/huaishu" class="user_name">huaishu</a>:
+neo4j有自己的客户端工具，可以到官网看看
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/11748927#comments">Neo4j文件说明</a>
+    <p style="margin:0px;"><a href="/luckymiss_w" class="user_name">luckymiss_w</a>:
+请问这些文件内容如何读取呢？可否类似MySQL的.sql文件通过导入到Navicat中直接读取里面的...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/44589999#comments">PowerDesigner  name commnet 自动生成脚本</a>
+    <p style="margin:0px;"><a href="/huaishu" class="user_name">huaishu</a>:
+不会，需要手动执行脚本
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/44589999#comments">PowerDesigner  name commnet 自动生成脚本</a>
+    <p style="margin:0px;"><a href="/u013179958" class="user_name">u013179958</a>:
+大神!如何让我每次按Ctrl+R(从数据库更新模型)的时候,自动执行第3个脚本呢?
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/50475317#comments">GitLab/Git在AndroidStudio上的使用</a>
+    <p style="margin:0px;"><a href="/hujie26" class="user_name">hujie26</a>:
+非常感谢，很有帮助
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/50475175#comments">GitLab使用总结</a>
+    <p style="margin:0px;"><a href="/u013055213" class="user_name">u013055213</a>:
+还有5-2,导入项目到远程仓库是remote add origin的地址其实就是项目的ssh地址.开...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/50475175#comments">GitLab使用总结</a>
+    <p style="margin:0px;"><a href="/u013055213" class="user_name">u013055213</a>:
+修改SSH Executable 为 Native,请问如何修改,楼主大人救急
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/50475175#comments">GitLab使用总结</a>
+    <p style="margin:0px;"><a href="/u013055213" class="user_name">u013055213</a>:
+写的很好,纠个错,创建目录的斜杠写反了
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/50475175#comments">GitLab使用总结</a>
+    <p style="margin:0px;"><a href="/qq_34474945" class="user_name">qq_34474945</a>:
+感谢楼主分享！
+    </p>
+    </li>
+    <li>
+   
+         <a href="/huaishu/article/details/49532419#comments">Rabbitmq安装指南</a>
+    <p style="margin:0px;"><a href="/jj89757hhb" class="user_name">jj89757hhb</a>:
+出现了 ERROR: node with name &quot;rabbit&quot; already running...
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+
+                   <!-- 广告位开始 -->                    <!-- 广告位结束 -->
+                   <div class="tracking-ad" data-view="true"  data-mtp="63" data-order="40" data-con="ad_content_1260" style="width: 200px; height: 500px;">
+                         <div id="nav_show_top_stop" style="width: 200px;height: 500px;z-index:1000"><div id="cpro_u2734128"></div>
+                             <div id="cpro_u3031287"></div></div>
+                   </div>
+    <script type="text/javascript">
+        setTimeout(function () {
+            var naviga_offsetTop = 0;
+            function naviga_stay_top() { var scrollTop = jQuery(document).scrollTop(); if (scrollTop > naviga_offsetTop) { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": "0px" }); } else { jQuery("#nav_show_top_stop").css({ "position": "fixed" }); jQuery("#nav_show_top_stop").css({ "top": naviga_offsetTop - scrollTop + "px" }); } }
+            function onload_function() { naviga_offsetTop = jQuery("#nav_show_top_stop").position().top; jQuery(window).bind("scroll", naviga_stay_top); jQuery(window).bind("mousewheel", naviga_stay_top); jQuery(document).bind("scroll", naviga_stay_top); jQuery(document).bind("mousewheel", naviga_stay_top); } jQuery(document).ready(onload_function);
+
+        }, 200);
+    </script>
+<script type="text/javascript">(window.cproArray = window.cproArray || []).push({ id: "u2734128" });  </script> 
+                    <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script> 
+                   <script type="text/javascript">
+                       /*PC端-博客内容页左侧Button2-200*200-2017/7/10*/
+                       (window.cproArray = window.cproArray || []).push({ id: "u3031287" });
+</script>
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+
+           </div>   
+
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+
+    </div>
+      <!--new top-->
+    
+
+     
+
+   
+        <!--new top-->
+   
+   
+
+    
+    
+    
+   
+
+   
+
+
+       <script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+          <script type="text/javascript">
+              //$(function () {
+              //    setTimeout(function () {
+              //        var searchtitletags = articletitle + ',' + $("#tags").html();
+              //        searchService({
+              //            index: 'blog',
+              //            query: searchtitletags,
+              //            from: 5,
+              //            size: 5,
+              //            appendTo: '#res',
+              //            url: 'recommend',
+              //            his: 2,
+              //            client: "blog_cf_enhance",
+              //            tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+              //        });
+              //    }, 1000);
+              //});
+
+         </script>
+    
+    <script src="http://static.blog.csdn.net/scripts/csdn_blog_detail.min.js" type="text/javascript"></script>
+        
+    <script type="text/javascript" src="http://c.csdnimg.cn/blog/csdn_public_blog_detail.min.js?20170626001"></script>
+
+    <script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=168906"></script>
+
+     
+    
+
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+    
+    
+        
+     
+
+    
+          
+    <div class="pop_CA_cover"  style="display:none"></div>
+    <div class="pop pop_CA"  style="display:none">
+          <div class="CA_header">
+            收藏助手
+            <span class="cancel_icon"  id="fapancle"  onclick="$('.pop_CA').hide();$('.pop_CA_cover').hide();"></span>
+          </div>
+          <iframe src="" id="fa" frameborder="0" width="100%" height="360"  scrolling="no" ></iframe>
+    </div>
+
+
+        <script type="text/javascript">
+
+            $(function () {
+                var fromjs = $("#fromjs");
+                if (fromjs.length > 0) {
+                    $("#fromjs .markdown_views pre").addClass("prettyprint");
+                    prettyPrint();
+
+                    $('pre.prettyprint code').each(function () {
+                        var lines = $(this).text().split('\n').length;
+                        var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                        $(this).addClass('has-numbering').parent().append($numbering);
+                        for (i = 1; i <= lines; i++) {
+                            $numbering.append($('<li/>').text(i));
+                        };
+                        $numbering.fadeIn(1700);
+                    });
+
+                    $('.pre-numbering li').css("color", "#999");
+                }
+            });
+
+            $(".markdown_views a[target!='_blank']").attr("target", "_blank");
+
+            //$(".toc a[target='_blank']").attr("target", "");
+
+            setTimeout(function () {
+                $(".toc a[target='_blank']").attr("target", "");
+            }, 500);
+
+        </script>
+
+</body>
+</html>   
